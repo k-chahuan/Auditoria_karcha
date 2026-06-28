@@ -1,123 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import ReactMarkdown from 'react-markdown'
 import './App.css'
+import resumen from '../docs_karcha/01_resumen_karcha.md?raw'
+import sqli from '../docs_karcha/02_sqli_karcha.md?raw'
+import xss from '../docs_karcha/03_xss_karcha.md?raw'
+import comandos from '../docs_karcha/04_comandos_karcha.md?raw'
+import activos from '../docs_karcha/05_activos_karcha.md?raw'
+import matriz from '../docs_karcha/06_matriz_karcha.md?raw'
+import controles from '../docs_karcha/07_controles_karcha.md?raw'
+import recuperacion from '../docs_karcha/08_recuperacion_karcha.md?raw'
+import prompts from '../docs_karcha/09_prompts_karcha.md?raw'
+
+function normalizeMarkdown(markdown) {
+  return markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+    if (/^(https?:)?\/\//i.test(src) || src.startsWith('/')) {
+      return match
+    }
+
+    return `![${alt}](/${src})`
+  })
+}
+
+function getTitle(markdown) {
+  const match = markdown.match(/^#\s+(.+)$/m)
+  return match ? match[1] : 'Documento técnico'
+}
+
+function MarkdownCard({ title, content }) {
+  return (
+    <article className="card">
+      <h2>{title}</h2>
+      <div className="markdown-body">
+        <ReactMarkdown>{normalizeMarkdown(content)}</ReactMarkdown>
+      </div>
+    </article>
+  )
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const sections = [
+    { title: getTitle(resumen), content: resumen },
+    { title: getTitle(sqli), content: sqli },
+    { title: getTitle(xss), content: xss },
+    { title: getTitle(comandos), content: comandos },
+    { title: getTitle(activos), content: activos },
+    { title: getTitle(matriz), content: matriz },
+    { title: getTitle(controles), content: controles },
+    { title: getTitle(recuperacion), content: recuperacion },
+    { title: getTitle(prompts), content: prompts },
+  ]
 
   return (
-    <div>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="app-shell">
+      <header className="hero-section">
+        <div className="hero-copy">
+          <p className="eyebrow">Auditoría de Seguridad Web</p>
+          <h1>Portal de Seguridad y Gestión de Riesgos</h1>
+          <p className="hero-text">
+            Presentación profesional de los hallazgos, controles, activos y planes de recuperación del proyecto.
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
+      <main className="content-grid">
+        {sections.map((section) => (
+          <MarkdownCard key={section.title} title={section.title} content={section.content} />
+        ))}
+      </main>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-
-      <footer className="bg-slate-100 text-slate-600 text-sm py-4 px-6">
-        <div className="max-w-4xl mx-auto flex justify-between">
+      <footer className="site-footer">
+        <div className="footer-inner">
           <span>Estudiante: Karim Eduardo Chahuán Segura</span>
           <span>Docente: Rubén Schnettler - INACAP Valparaíso</span>
         </div>
