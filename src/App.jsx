@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import './App.css'
 import resumen from '../docs_karcha/01_resumen_karcha.md?raw'
 import sqli from '../docs_karcha/02_sqli_karcha.md?raw'
@@ -33,7 +34,7 @@ function MarkdownCard({ title, content }) {
     <article className="card">
       <h2>{title}</h2>
       <div className="markdown-body">
-        <ReactMarkdown>{normalizeMarkdown(content)}</ReactMarkdown>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{normalizeMarkdown(content)}</ReactMarkdown>
       </div>
     </article>
   )
