@@ -16,7 +16,8 @@ function normalizeMarkdown(markdown) {
       return match
     }
 
-    return `![${alt}](/${src})`
+    const normalizedSrc = src.startsWith('img_karcha/') ? `/img_karcha/${src.replace(/^img_karcha\//, '')}` : `/${src}`
+    return `![${alt}](${normalizedSrc})`
   })
 }
 
