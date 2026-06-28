@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -115,7 +115,14 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+
+      <footer className="bg-slate-100 text-slate-600 text-sm py-4 px-6">
+        <div className="max-w-4xl mx-auto flex justify-between">
+          <span>Estudiante: Karim Eduardo Chahuán Segura</span>
+          <span>Docente: Rubén Schnettler - INACAP Valparaíso</span>
+        </div>
+      </footer>
+    </div>
   )
 }
 
