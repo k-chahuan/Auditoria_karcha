@@ -1,4 +1,4 @@
-# Resumen Ejecutivo - Auditoría de Seguridad Web
+# Resumen - Seguridad Web
 **Organización:** Universidad del Pacífico
 **Portal Auditado:** Portal de Clientes (Alumnos, Docentes y Postulantes)
 **Nivel de Alcance:** Entorno de Pruebas Controlado (DVWA - Nivel Low)

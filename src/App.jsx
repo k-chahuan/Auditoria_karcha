@@ -24,9 +24,9 @@ function normalizeMarkdown(markdown) {
   })
 }
 
-function getTitle(markdown) {
+function getTitle(markdown, fallbackTitle) {
   const match = markdown.match(/^#\s+(.+)$/m)
-  return match ? match[1] : 'Documento técnico'
+  return match ? match[1] : fallbackTitle
 }
 
 function MarkdownCard({ title, content }) {
@@ -42,26 +42,23 @@ function MarkdownCard({ title, content }) {
 
 function App() {
   const sections = [
-    { title: getTitle(resumen), content: resumen },
-    { title: getTitle(sqli), content: sqli },
-    { title: getTitle(xss), content: xss },
-    { title: getTitle(comandos), content: comandos },
-    { title: getTitle(activos), content: activos },
-    { title: getTitle(matriz), content: matriz },
-    { title: getTitle(controles), content: controles },
-    { title: getTitle(recuperacion), content: recuperacion },
-    { title: getTitle(prompts), content: prompts },
+    { title: getTitle(resumen, 'Resumen - Seguridad Web'), content: resumen },
+    { title: getTitle(sqli, 'Análisis SQLi'), content: sqli },
+    { title: getTitle(xss, 'Análisis XSS'), content: xss },
+    { title: getTitle(comandos, 'Análisis Command Injection'), content: comandos },
+    { title: getTitle(activos, 'Activos y Riesgos'), content: activos },
+    { title: getTitle(matriz, 'Matriz de Riesgo'), content: matriz },
+    { title: getTitle(controles, 'Controles y Mitigación'), content: controles },
+    { title: getTitle(recuperacion, 'Recuperación y Continuidad'), content: recuperacion },
+    { title: getTitle(prompts, 'Promts y reflexión del uso de la Inteligencia artificial (IA)'), content: prompts },
   ]
 
   return (
     <div className="app-shell">
       <header className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">Auditoría de Seguridad Web</p>
-          <h1>Portal de Seguridad y Gestión de Riesgos</h1>
-          <p className="hero-text">
-            Presentación profesional de los hallazgos, controles, activos y planes de recuperación del proyecto.
-          </p>
+          <p className="eyebrow">Proyecto de Auditoría</p>
+          <h1>Seguridad Web y Gestión de Riesgos</h1>
         </div>
       </header>
 
@@ -73,7 +70,17 @@ function App() {
 
       <footer className="site-footer">
         <div className="footer-inner">
-          <span>Estudiante: Karim Eduardo Chahuán Segura</span>
+          <div className="footer-left">
+            <span>Estudiante: Karim Eduardo Chahuán Segura</span>
+            <a
+              href="https://github.com/k-chahuan"
+              target="_blank"
+              rel="noreferrer"
+              className="github-button"
+            >
+              GitHub
+            </a>
+          </div>
           <span>Docente: Rubén Schnettler - INACAP Valparaíso</span>
         </div>
       </footer>

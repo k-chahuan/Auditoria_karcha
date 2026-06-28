@@ -30,3 +30,8 @@ Cambios en las rutas de las imagenes
 hace el cambio direactamente en el markdown para que el texto del nivel de riesgo tenga un formato con color visible
 
 ---
+*en vercel, el codigo que busca cambiar los colores segun la vulnerabilidad creado en el mismo markdown 06_matriz_karcha.md aparece literalmente en la página, no se muestran los colores.*
+
+**La IA hace...**
+
+instala soporte necesario para que el HTML renderice correctamente.

@@ -28,6 +28,7 @@ Basado en el contexto universitario de la Universidad del Pacífico, donde el po
 **criticidad total** = 8
 **nivel de riesgo (color)** = <span style="color:#f59e0b;font-weight:700;">Naranja - Medio</span>
 
+---
 
 ## 2. Justificación Institucional
 * **Inyección SQL:** Puntuada alta debido a la exposición del portal en internet. Su impacto es mayor porque la alteración de notas destruye la fe pública de la Universidad del Pacífico.
