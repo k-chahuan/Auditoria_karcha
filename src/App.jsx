@@ -11,7 +11,9 @@ import recuperacion from '../docs_karcha/08_recuperacion_karcha.md?raw'
 import prompts from '../docs_karcha/09_prompts_karcha.md?raw'
 
 function normalizeMarkdown(markdown) {
-  return markdown.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+  const withoutCodeWrappers = markdown.replace(/`(!\[[^\]]*\]\([^)]+\))`/g, '$1')
+
+  return withoutCodeWrappers.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
     if (/^(https?:)?\/\//i.test(src) || src.startsWith('/')) {
       return match
     }
