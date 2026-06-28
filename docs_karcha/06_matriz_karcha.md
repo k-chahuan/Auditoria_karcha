@@ -4,24 +4,29 @@
 Basado en el contexto universitario de la Universidad del Pacífico, donde el portal está expuesto a miles de estudiantes y atacantes externos, se construye la siguiente estimación:
 
 
-Vulnerabilidades:
-- Inyección de Comandos (ACT-04): 
-    - probabilidad (1-5) = 3 (Media)
-    - impacto (1-5) = 5 (Muy alto)
-    - criticidad total = 15
-    - nivel de riesgo (color) = Rojo - Critico
+## Vulnerabilidades:
+### **Inyección de Comandos (ACT-04):**
 
-- Inyección SQL (ACT-01 / ACT-05):
-    - probabilidad (1-5) = 4 (Alta)
-    - impacto (1-5) = 4 (Mayor)
-    - criticidad total = 16
-    - nivel de riesgo (color) = Rojo - Critico
+**probabilidad (1-5)** = 3 (Media)
+**impacto (1-5)** = 5 (Muy alto)
+**criticidad total** = 15
+**nivel de riesgo** (color) = <span style="color:#ef4444;font-weight:700;">Rojo - Crítico</span>
 
-- XSS Reflejado (ACT-03):
-    - probabilidad (1-5) = 4 (Alta)
-    - impacto (1-5) = 2 (Menor)
-    - criticidad total = 8
-    - nivel de riesgo (color) = Naranja - Medio
+---
+### **Inyección SQL (ACT-01 / ACT-05):**
+
+**probabilidad (1-5)** = 4 (Alta)
+**impacto (1-5)** = 4 (Mayor)
+**criticidad total** = 16
+**nivel de riesgo (color)** = <span style="color:#ef4444;font-weight:700;">Rojo - Crítico</span>
+
+---
+### **XSS Reflejado (ACT-03):**
+
+**probabilidad (1-5)** = 4 (Alta)
+**impacto (1-5)** = 2 (Menor)
+**criticidad total** = 8
+**nivel de riesgo (color)** = <span style="color:#f59e0b;font-weight:700;">Naranja - Medio</span>
 
 
 ## 2. Justificación Institucional
